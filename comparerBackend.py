@@ -39,23 +39,41 @@ def compare_urls(url, url2):
   second_whole_page_text =[]
   version_difference_ratio = []
 
+
+
   html_content_1 = fetch_page(url)
+
   if html_content_1:
-    soup = parse_html(html_content_1)
-    soupC = soup.find(id='content')
-    soupP = soupC.find('section')
-    first_whole_page_text = [soupP.get_text(), 'a']
 
-    # print("CHILDREN: ", soupP)
-    # print(soup.prettify())
+    if 'openstax' in url:
+      
+      soup = parse_html(html_content_1)
+      soupC = soup.find(id='main-content')
+      soupP = soupC.find('div')
+      first_whole_page_text = [soupP.get_text(), 'a']
 
-    for para in soupP:
-      p = para.get_text()
-      p = clean_text(p)
-      # print(p,"\n")
-      if p == "":
-        continue
-      first_version_list.append(p)
+      for para in soupP:
+        p = para.get_text()
+        p = clean_text(p)
+        if p == "":
+          continue
+        first_version_list.append(p)
+        
+    if 'pressbooks' in url:
+      soup = parse_html(html_content_1)
+      soupC = soup.find(id='content')
+      soupP = soupC.find('section')
+      first_whole_page_text = [soupP.get_text(), 'a']
+
+      # print("CHILDREN: ", soupP)
+      # print(soup.prettify())
+
+      for para in soupP:
+        p = para.get_text()
+        p = clean_text(p)
+        if p == "":
+          continue
+        first_version_list.append(p)
 
   html_content_2 = fetch_page(url2)
   if html_content_2:

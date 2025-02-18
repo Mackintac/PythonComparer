@@ -60,11 +60,11 @@ class MainWindow(QWidget):
         # url2 = 'https://ecampusontario.pressbooks.pub/llsadvcomm/chapter/7-1-the-evolution-of-digital-media/'
 
 
-        url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
-        url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
-
         # url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
         # url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
+
+        url1 = 'https://openstax.org/books/concepts-biology/pages/6-1-the-genome'
+        url2 = 'https://ecampusontario.pressbooks.pub/personalizedhealthnursing/chapter/genome-cell-cycle/'
 
         # url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
         # url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
