@@ -76,7 +76,40 @@ def compare_urls(url, url2):
         first_version_list.append(p)
 
   html_content_2 = fetch_page(url2)
+
   if html_content_2:
+
+    if 'openstax' in url:
+      
+      soup = parse_html(html_content_2)
+      soupC = soup.find(id='main-content')
+      soupP = soupC.find('div')
+      second_whole_page_text = [soupP.get_text(), 'a']
+
+      for para in soupP:
+        p = para.get_text()
+        p = clean_text(p)
+        if p == "":
+          continue
+        second_version_list.append(p)
+        
+    if 'pressbooks' in url:
+      soup = parse_html(html_content_2)
+      soupC = soup.find(id='content')
+      soupP = soupC.find('section')
+      second_whole_page_text = [soupP.get_text(), 'a']
+
+      # print("CHILDREN: ", soupP)
+      # print(soup.prettify())
+
+      for para in soupP:
+        p = para.get_text()
+        p = clean_text(p)
+        if p == "":
+          continue
+        second_version_list.append(p)
+
+
     soup = parse_html(html_content_2)
     soupC = soup.find(id='content')
     soupP = soupC.find('section')
