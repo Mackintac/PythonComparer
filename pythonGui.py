@@ -10,7 +10,7 @@ class MainWindow(QWidget):
 
     def initializeUI(self):
         self.setGeometry(100, 100, 1200,800)
-        self.setWindowTitle("PyQt GUI")
+        self.setWindowTitle("OER Comparer")
         self.setUpMainWindow()
         self.show()  
 
@@ -53,31 +53,17 @@ class MainWindow(QWidget):
         self.setLayout(layout)
 
     def compareUrls(self):
-        # url1 = self.url1_input.text()
-        # url2 = self.url2_input.text()
-        
-        # url1 = 'https://ecampusontario.pressbooks.pub/commbusprofcdn/chapter/the-evolution-of-digital-media/'
-        # url2 = 'https://ecampusontario.pressbooks.pub/llsadvcomm/chapter/7-1-the-evolution-of-digital-media/'
-
-
-        # url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
-        # url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
-
-        url1 = 'https://openstax.org/books/concepts-biology/pages/6-1-the-genome'
-        url2 = 'https://ecampusontario.pressbooks.pub/personalizedhealthnursing/chapter/genome-cell-cycle/'
-
-        # url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
-        # url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
-
-        # url1 = 'https://pressbooks.palni.org/writingfordigitalmedia/chapter/best-practices-for-digital-writing-2/' 
-        # url2 = 'https://ecampusontario.pressbooks.pub/multimediacomm/chapter/bestpractices-digitalwriting/'
+        url1 = self.url1_input.text()
+        url2 = self.url2_input.text()
 
         first_version_list, second_version_list, ratio, html_diff = comparerBackend.compare_urls(url1, url2)
 
         self.html_diff_display.setHtml(html_diff)
-        
-        print(ratio)
-        self.similar_label.setText(str(ratio))
+
+        if "Error" in first_version_list[0] or "Error" in second_version_list[0]:
+            self.similar_label.setText("Error fetching URLs")
+        else:
+            self.similar_label.setText(f"{ratio}% Similar")
 
     def showHelp(self):
         help_message = "This is a help message."
