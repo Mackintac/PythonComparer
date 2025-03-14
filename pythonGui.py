@@ -36,7 +36,7 @@ class MainWindow(QWidget):
         compare_button.clicked.connect(self.compareUrls)
         layout.addWidget(compare_button)
 
-        self.similar_label = QLabel("90% Similar", self)
+        self.similar_label = QLabel("0% Similar", self)
         layout.addWidget(self.similar_label)
 
         button_layout = QHBoxLayout()
