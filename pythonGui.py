@@ -67,6 +67,20 @@ class MainWindow(QWidget):
 
     def showHelp(self):
         help_message = "This is a help message."
+        help_message = '''How to use: 
+
+1. Insert the URL of the first page you would like to compare into the text area with the placeholder "Enter URL#1".
+2. Insert the URL of the second page you would like to compare (to the first page) into the text area with the placeholder "Enter URL#2".
+3. Once both URLs have been provided, click on the "Compare" button near the bottom of the window to begin the process to compare the text contents of the two pages.
+4. View your results in the center application window OR open the folder where this program is stored and view the document itself named "diff.html" in a browser (or rename the file in order to save it for later viewing!).
+5. Repeat process to compare another set of webpages.
+
+Legend:
+
+Similarity Percentage = A percentage value for how similar the entirety of the two pages are to each other. 
+Green Highlights = Added text that is less than 40% similar between pages.
+Yellow Highlights = Modified text between pages.
+Red Highlights = Removed text that is than 40% similar between pages.'''
         QMessageBox.information(self, "Help", help_message)
 
 if __name__ == '__main__':
